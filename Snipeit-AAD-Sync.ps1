@@ -1,7 +1,7 @@
-# Syncs users from AD with Snipe-It.
+# Syncs users from Azure AD with Snipe-It.
 #
 # Requirements:
-# * RSAT: Active Directory PowerShell module.
+# * AzureAD module: https://www.powershellgallery.com/packages/AzureAD
 # * SnipeItPS module (1.10.225 or newer): https://github.com/snazy2000/SnipeitPS
 # * SnipeIt-Sync-PS.ps1: https://github.com/mattcarras/SnipeItSyncPS
 # 
@@ -9,8 +9,11 @@
 # Update-Module SnipeitPS
 # Export credentials: Export-SnipeItCredentials -File "snipeit_creds.xml" -URL "<URL>" -APIKey "<APIKEY>"
 #
-# Author: Matthew Carras
-# Source: https://github.com/mattcarras/SnipeItSyncPS
+# Original Author: Matthew Carras
+# Original Source: https://github.com/mattcarras/SnipeItSyncPS
+#
+# Port Author: Christian Kurti
+# Port Source: https://github.com/CKurti-MCMTSG/SnipeItSyncPS
 
 # Parameter definitions.
 # Given parameters override configuration below.
@@ -23,7 +26,7 @@ $CREDXML_PATH = "your_exported_credentials.xml"
 # This must evaluate to $true to actually start syncing. Otherwise the script skips syncing entirely.
 # It also gives a debug breakpoint, if you have debugging enabled.
 # Note the -DisableSync switch overrides this setting.
-$ENABLE_SYNC = $true #$false
+$ENABLE_SYNC = $false
 
 # Target group(s) of users to sync with Snipe-It.
 # This should be one or more hashtables in the form of:
